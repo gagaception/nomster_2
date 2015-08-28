@@ -8,6 +8,9 @@ gem 'will_paginate', '~> 3.0.6'
 
 gem 'simple_form'
 
+gem 'figaro', ">= 1.0.0"
+gem 'geocoder'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
