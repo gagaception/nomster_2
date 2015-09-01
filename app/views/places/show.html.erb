@@ -41,7 +41,8 @@
 
   <div id="map-canvas"></div>
 <% end %>
-	<div class="pull-right">
+	
+  <div class="pull-right">
 	<% if current_user && current_user == @place.user %>
 		<%= link_to 'Edit', edit_place_path(@place), :class => 'btn btn-primary' %>
 		<%= link_to 'Destroy', place_path(@place), :method => :delete, :data => {:confirm => "Are you sure want to delete this?"}, :class => 'btn btn-danger' %> 
@@ -88,7 +89,7 @@
   </div>
 </div>
 
-<h1>Comments</h1>
+
 <% @place.comments.each do |comment| %>
   <div class="col-xs-12 col-sm-6">
     <blockquote>
