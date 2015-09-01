@@ -3,13 +3,13 @@
 	<i><%= @place.address %></i>
 	<br /><br />
 	<p><%= @place.description %></p>
-
-  <style>
-    html, body, #map-canvas {
-      height: 100%;
-      margin: 0px;
-      padding: 0px;
-    }
+	
+	<style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
   </style>
   <% if @place.latitude.present? && @place.longitude.present? %>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
@@ -33,10 +33,15 @@
 
   </script>
 
-  <div id="map-canvas"></div>
- <% end %>
+  <style>
+  	#map-canvas {
+    	height: 300px;
+ 	 }
+  </style>
 
-  	<div class="pull-right">
+  <div id="map-canvas"></div>
+<% end %>
+	<div class="pull-right">
 	<% if current_user && current_user == @place.user %>
 		<%= link_to 'Edit', edit_place_path(@place), :class => 'btn btn-primary' %>
 		<%= link_to 'Destroy', place_path(@place), :method => :delete, :data => {:confirm => "Are you sure want to delete this?"}, :class => 'btn btn-danger' %> 
