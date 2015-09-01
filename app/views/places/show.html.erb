@@ -3,7 +3,16 @@
 	<i><%= @place.address %></i>
 	<br /><br />
 	<p><%= @place.description %></p>
+
+  <h1>Photos</h1>
+  <% @place.photos.each do |photo| %>
+    <%= image_tag photo.picture %>
+    <%= photo.caption %>
+  <% end %>
 	
+  <br />
+  <br />
+
 	<style>
       html, body, #map-canvas {
         height: 100%;
@@ -11,6 +20,7 @@
         padding: 0px;
       }
   </style>
+  
   <% if @place.latitude.present? && @place.longitude.present? %>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   <script>
@@ -50,8 +60,12 @@
 
 	</div>
 </div>
-<div class="clear"></div>
 
+ <div class="clear"></div>
+<%= simple_form_for @photo, :url => place_photos_path(@place) do  |f| %>
+  <%= f.input :picture %>
+  <%= f.submit "Add a Picture", :class => 'btn btn-primary' %>
+<% end %>
 
 <div class="col-xs-10 col-xs-offset-1">
 <h1 class="pull-left">Comments</h1>
@@ -101,3 +115,6 @@
     </blockquote>
   </div>
 <% end %> 
+
+
+
