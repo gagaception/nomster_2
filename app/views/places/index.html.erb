@@ -22,7 +22,7 @@
  	 <% if place.photos.present? %>
      	<div class="col-xs-12">
     		<% if place.photos.last.present? %>
-      			<%= place.photos.last.picture %>
+      			<%=image_tag place.photos.last.picture %>
        		<% end %>
     	</div>
  	 <% end %>
