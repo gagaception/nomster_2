@@ -53,11 +53,12 @@ Nomster2::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  devise_for :users
   root 'places#index'
   resources :places do 
     resources :comments, :only => :create
     resources :photos, :only => :create
   end
   resources :users, :only => :show
-  devise_for :users
+  
 end
