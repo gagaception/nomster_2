@@ -1,14 +1,31 @@
 <div class="booyah-box">
-<div class="col-xs-4">
-	<%= image_tag 'user.png' %>
-</div>
+	<div class="col-xs-4">
+		<%= image_tag 'user.png' %>
+	</div>
 
-<div class="col-xs-8">
-	<h1><%= @user.email %></h1>
-	<h3>Member since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
-	<h4><%= @user.comments.count %> Total comments</h4>
-	<h4><%= @user.comments.where(:rating => '5_stars').count %> Total reviews</h4>
-</div>
-<div class="clear"></div>
+	<div class="col-xs-8">
+		<h1><%= @user.email %></h1>
+		<h3>Member since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+		<h4><%= @user.comments.count %> Total comments</h4>
+		<h4><%= @user.comments.where(:rating => '5_stars').count %> Total reviews</h4>
+	</div>
+	<div class="clear"></div>
 
 </div>
+<br />
+<h1 class="text-center">My comments</h1>
+<br />
+<% @user.comments.each do |comment| %>
+  <div class="col-xs-12 col-sm-6">
+  <h2 class="text-center"><%= link_to comment.place.name, place_path(comment.palce) %></h2>
+    <blockquote>
+      <% if comment.humanized_rating.present? %>
+        <b><%= comment.humanized_rating %></b> -
+      <% end %>
+      <%= comment.message %>
+      <small><%= comment.user.email %></small>
+    </blockquote>
+  </div>
+<% end %>
+
+
