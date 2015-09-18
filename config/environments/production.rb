@@ -10,6 +10,8 @@ Nomster2::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
+  #ActionMailer::Base.default_url_options[:host] = "nomster2-aziz-sharipov.herokuapp.com"
+
   config.action_mailer.default_url_options = { :host => 'nomster2-aziz-sharipov.herokuapp.com' }
   # Settings specified here will take precedence over those in config/application.rb.
 
